@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.kuzkir.fxcontrol;
+package com.github.kuzkir.fxcontrol.message;
 
 import java.util.function.Supplier;
 import javafx.animation.FadeTransition;
