@@ -7,6 +7,9 @@ package com.github.kuzkir.fxcontrol.message;
 
 import java.util.function.Supplier;
 import javafx.animation.FadeTransition;
+import javafx.beans.value.WritableValue;
+import javafx.css.StyleableProperty;
+import javafx.scene.AccessibleRole;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,6 +21,12 @@ import javafx.util.Duration;
  */
 public class ErrorProvider extends ImageView {
     private Tooltip tooltip;
+    
+    private void initialize() {
+        getStyleClass().setAll("error-provider");
+        setAccessibleRole(AccessibleRole.IMAGE_VIEW);
+        ((StyleableProperty<Boolean>)(WritableValue<Boolean>)focusTraversableProperty()).applyStyle(null, Boolean.FALSE);
+    }
     
     public String getMessage() {
         return tooltip.getText();
@@ -32,6 +41,7 @@ public class ErrorProvider extends ImageView {
     public ErrorProvider() {
         super(new Image(ErrorProvider.class.getResourceAsStream("/High Importance-16.png"),16.0,16.0,true,true));
         setVisible(false);
+        initialize();
     }
     
     public boolean verify(Supplier<Boolean> supplier, String message) {
